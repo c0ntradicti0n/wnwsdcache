@@ -17,9 +17,6 @@ def timing(description: str) -> None:
 
     print(f"{description}: {ellapsed_time}")
 
-from guppy import hpy
-h = hpy()
-print (h.heap())
 
 sample = """Note While this decorator makes it easy to create well behaved totally ordered types, it does come at the cost of slower execution and more complex stack traces for the derived comparison methods. If performance benchmarking indicates this is a bottleneck for a given application, implementing all six rich comparison methods instead is likely to provide an easy speed boost."""
 
@@ -38,3 +35,7 @@ with timing("lemmatize list 1"):
 shuffle(texts)
 with timing("lemmatize list^2"):
     synseted_texts = [memoizedstringsynsettisation.lazy_lemmatize(t) for t in texts]
+
+import guppy3
+from guppy3 import hpy
+print(hpy.heap())
