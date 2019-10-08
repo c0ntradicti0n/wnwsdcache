@@ -33,7 +33,7 @@ with timing("lemmatize list 1"):
     synseted_texts = [memoizedstringsynsettisation.lazy_lemmatize(t) for t in texts]
 
 shuffle(texts)
-with timing("lemmatize list^2"):
+with timing("lemmatize list 2"):
     synseted_texts = [memoizedstringsynsettisation.lazy_lemmatize(t) for t in texts]
 
 import guppy3

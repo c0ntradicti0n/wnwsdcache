@@ -75,6 +75,28 @@ def get_antonyms(synset):
             antonyms |= set(flatten([list(x.lemmas()) for x in antonym.synset().similar_tos()]))
     return antonyms
 
+@wordnet_looker('pertainyms')
+def get_pertainyms(synset):
+    pertainyms = set()
+    new_pertainyms = set()
+    for lemma in synset.lemmas():
+        new_pertainyms |= set(lemma.pertainyms())
+        pertainyms |= new_pertainyms
+        for pertainym in new_pertainyms:
+            pertainyms |= set(flatten([list(x.pertainyms()) for x in pertainym.synset().similar_tos()]))
+    return pertainyms
+
+@wordnet_looker('derivationally_related_forms')
+def get_derivationally_related_forms(synset):
+    derivationally_related_forms = set()
+    new_derivationally_related_forms = set()
+    for lemma in synset.lemmas():
+        new_derivationally_related_forms |= set(lemma.derivationally_related_forms())
+        derivationally_related_forms |= derivationally_related_forms
+        for derivationally_related_form in derivationally_related_forms:
+            derivationally_related_forms |= set(flatten([list(x.derivationally_related_forms()) for x in derivationally_related_forms.synset().similar_tos()]))
+    return derivationally_related_forms
+
 @wordnet_looker('synonyms')
 def get_synonyms(synset):
     return synset
